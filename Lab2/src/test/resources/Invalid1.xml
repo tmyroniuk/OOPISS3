@@ -2,7 +2,7 @@
     <Name>Privat Bank</Name>
     <Country>Ukraine</Country>
     <Deposit>
-        <Type>Urgent</Type>
+        <Type>SuperUrgent</Type>
         <Depositor>Michael</Depositor>
         <AccountId>11111</AccountId>
         <AmountOnDeposit>2000</AmountOnDeposit>

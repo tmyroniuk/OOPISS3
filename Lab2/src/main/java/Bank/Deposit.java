@@ -1,11 +1,11 @@
-package Banks;
+package Bank;
 
-public class Deposit {
+public class Deposit implements Comparable {
 
     private DepositType type;
     private String depositor;
     private int accountId;
-    private int accountOnDeposit;
+    private int amountOnDeposit;
     private int profitability;  // profitability in percents yearly
     private int timeConstraints;  // time constraints in months
 
@@ -17,43 +17,32 @@ public class Deposit {
         return this.type.equals(deposit.getType()) &&
                 this.depositor.equals(deposit.getDepositor()) &&
                 this.accountId == deposit.getAccountId() &&
-                this.accountOnDeposit == deposit.getAccountOnDeposit() &&
+                this.amountOnDeposit == deposit.getAmountOnDeposit() &&
                 this.profitability == deposit.getProfitability() &&
                 this.timeConstraints == deposit.getTimeConstraints();
     }
 
     @Override
     public String toString() {
-        String res;
+        String res = "\t[\n\tType: ";
         switch (type) {
-            case Metal -> {
-                res = "Metal";
-            }
-            case Saving -> {
-                res = "Saving";
-            }
-            case Urgent -> {
-                res = "Urgent";
-            }
-            case Calculated -> {
-                res = "Calculated";
-            }
-            case OnDemand -> {
-                res = "OnDemand";
-            }
-            case Accumulating -> {
-                res = "Accumulating"
-            }
-            default -> {
-                res = "";
-            }
+            case Metal -> res += "Metal";
+            case Saving -> res += "Saving";
+            case Urgent -> res += "Urgent";
+            case Calculated -> res += "Calculated";
+            case OnDemand -> res += "OnDemand";
+            case Accumulating -> res += "Accumulating";
         }
-        res += "Depositor: " + depositor +
-                " Account ID: " + accountId +
-                " Account on deposit: " + accountOnDeposit +
-                " Profitability: " + profitability +
-                " Time constraint: " + timeConstraints;
+        res += "\n\tDepositor: " + depositor +
+                "\n\tAccount ID: " + accountId +
+                "\n\tAccount on deposit: " + amountOnDeposit +
+                "\n\tProfitability: " + profitability +
+                "\n\tTime constraint: " + timeConstraints + "\n\t]";
         return res;
+    }
+
+    public int compareTo(Object o) {
+        return Integer.compare(accountId, ((Deposit) o).accountId);
     }
 
     public DepositType getType() {
@@ -80,12 +69,12 @@ public class Deposit {
         this.accountId = accountId;
     }
 
-    public int getAccountOnDeposit() {
-        return accountOnDeposit;
+    public int getAmountOnDeposit() {
+        return amountOnDeposit;
     }
 
-    public void setAccountOnDeposit(int accountOnDeposit) {
-        this.accountOnDeposit = accountOnDeposit;
+    public void setAmountOnDeposit(int amountOnDeposit) {
+        this.amountOnDeposit = amountOnDeposit;
     }
 
     public int getProfitability() {

@@ -6,6 +6,6 @@ public class MonthlyPlanTest {
     @Test
     public void annualCostTest() {
         Plan plan = new MonthlyPlan(150, 200);
-        Assert.assertEquals(plan.annualCost(), 12 * 150);
+        Assert.assertEquals(plan.getAnnualCost(), 12 * 150);
     }
 }

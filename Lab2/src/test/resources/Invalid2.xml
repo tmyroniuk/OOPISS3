@@ -1,4 +1,4 @@
-<Bank>
+<CreditOffice>
     <Name>Privat Bank</Name>
     <Country>Ukraine</Country>
     <Deposit>
@@ -17,4 +17,4 @@
         <Profitability>8</Profitability>
         <TimeConstraints>6</TimeConstraints>
     </Deposit>
-</Bank>
+</CreditOffice>

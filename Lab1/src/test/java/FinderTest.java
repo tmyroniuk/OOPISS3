@@ -20,7 +20,7 @@ public class FinderTest {
     public void byPredicateTest1() {
         Optional<Plan> plan = Finder.byPredicate(
                 plans,
-                p -> p.users() == 2);
+                p -> p.getUsers() == 2);
         Assert.assertTrue(plan.isPresent());
         Assert.assertEquals(plan.get(), plans.get(5));
     }
@@ -29,7 +29,7 @@ public class FinderTest {
     public void byPredicateTest2() {
         Optional<Plan> plan = Finder.byPredicate(
                 plans,
-                p -> p.cost() <= 200);
+                p -> p.getCost() <= 200);
         Assert.assertTrue(plan.isPresent());
         Assert.assertEquals(plan.get(), plans.get(0));
     }
@@ -47,7 +47,7 @@ public class FinderTest {
     public void byPredicateTest4() {
         Optional<Plan> plan = Finder.byPredicate(
                 plans,
-                p -> p.users() <= 1);
+                p -> p.getUsers() <= 1);
         Assert.assertFalse(plan.isPresent());
     }
 }

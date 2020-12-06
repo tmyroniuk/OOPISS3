@@ -6,13 +6,13 @@ public class PlanTest {
     @Test
     public void costTest() {
         Plan plan = new Unlimited4G(200);
-        Assert.assertEquals(plan.cost(), 150);
+        Assert.assertEquals(plan.getCost(), 150);
     }
 
     @Test
     public void usersTest() {
         Plan plan = new Unlimited4G(200);
-        Assert.assertEquals(plan.users(), 200);
+        Assert.assertEquals(plan.getUsers(), 200);
     }
 
     @Test
@@ -21,17 +21,17 @@ public class PlanTest {
         Assert.assertThrows(NotEnoughMoneyException.class, () -> {
             plan.apply(100);
         });
-        Assert.assertEquals(plan.users(), 1);
+        Assert.assertEquals(plan.getUsers(), 1);
         plan.apply(150);
-        Assert.assertEquals(plan.users(), 2);
+        Assert.assertEquals(plan.getUsers(), 2);
     }
 
     @Test
     public void discardTest() throws NoUsersException {
         Plan plan = new Unlimited4G(1);
         plan.discard();
-        Assert.assertEquals(plan.users(), 0);
+        Assert.assertEquals(plan.getUsers(), 0);
         Assert.assertThrows(NoUsersException.class, plan::discard);
-        Assert.assertEquals(plan.users(), 0);
+        Assert.assertEquals(plan.getUsers(), 0);
     }
 }

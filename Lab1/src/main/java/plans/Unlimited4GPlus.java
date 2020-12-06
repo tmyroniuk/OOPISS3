@@ -9,4 +9,11 @@ public class Unlimited4GPlus extends YearlyPlan {
     public String toString() {
         return "Unlimited 4G Plus, " + super.toString();
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if(other == this) return true;
+        if(!(other instanceof Unlimited4GPlus)) return false;
+        return super.equals(other);
+    }
 }

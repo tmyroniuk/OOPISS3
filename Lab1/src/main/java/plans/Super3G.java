@@ -9,4 +9,11 @@ public class Super3G extends MonthlyPlan {
     public String toString() {
         return "Super 3G, " + super.toString();
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if(other == this) return true;
+        if(!(other instanceof Super3G)) return false;
+        return super.equals(other);
+    }
 }

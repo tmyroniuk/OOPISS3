@@ -2,38 +2,47 @@ package plans;
 
 public abstract class Plan implements Applicable, Payable {
 
-    private int _cost;
-    private int _users;
+    private int cost;
+    private int users;
 
     public Plan(int cost, int users) {
-        _cost = cost;
-        _users = users;
+        this.cost = cost;
+        this.users = users;
     }
 
     public void apply(float balance) throws NotEnoughMoneyException {
-        if(balance < cost()) {
+        if(balance < getCost()) {
             throw new NotEnoughMoneyException("Not enough credit. Please,top up your account.");
         }
-        ++_users;
+        ++users;
     }
 
     public void discard() throws NoUsersException {
-        if(_users == 0) {
+        if(users == 0) {
             throw new NoUsersException("No users applied to this plan.");
         }
-        --_users;
+        --users;
     }
 
-    public int users() {
-        return _users;
+    public int getUsers() {
+        return users;
     }
 
-    public int cost() {
-        return _cost;
+    public int getCost() {
+        return cost;
     }
 
     @Override
     public String toString() {
-        return "cost: " + cost() + ", users: " + users();
+        return "cost: " + getCost() + ", users: " + getUsers();
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if(!(other instanceof Plan))
+            return false;
+        Plan plan = (Plan) other;
+        return plan.cost == this.cost &&
+                plan.users == this.users;
     }
 }

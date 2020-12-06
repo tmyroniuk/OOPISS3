@@ -1,2 +1,5 @@
-package Parsers;public class Parser {
+package Parsers;
+
+public interface Parser {
+    boolean parseFile(String filePath);
 }

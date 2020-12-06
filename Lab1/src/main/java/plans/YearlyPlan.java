@@ -5,8 +5,8 @@ public class YearlyPlan extends Plan {
         super(cost, users);
     }
 
-    public int annualCost() {
-        return cost();
+    public int getAnnualCost() {
+        return getCost();
     }
 
     @Override

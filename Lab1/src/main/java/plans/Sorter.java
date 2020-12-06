@@ -9,13 +9,13 @@ public class Sorter {
 
     static public List<Plan> byCost(List<Plan> plans) {
         return plans.stream()
-                .sorted(Comparator.comparing(Plan::cost))
+                .sorted(Comparator.comparing(Plan::getCost))
                 .collect(Collectors.toList());
     }
 
     static public List<Plan> byAnnualCost(List<Plan> plans) {
         return plans.stream()
-                .sorted(Comparator.comparing(Plan::annualCost))
+                .sorted(Comparator.comparing(Plan::getAnnualCost))
                 .collect(Collectors.toList());
     }
 }

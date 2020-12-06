@@ -9,4 +9,11 @@ public class Business4GPlus extends YearlyPlan {
     public String toString() {
         return "Business 4G Plus, " + super.toString();
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if(other == this) return true;
+        if(!(other instanceof Business4GPlus)) return false;
+        return super.equals(other);
+    }
 }

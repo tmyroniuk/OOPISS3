@@ -1,41 +1,34 @@
-package Banks;
+package Bank;
 
-import java.sql.Time;
+import java.awt.*;
+import java.util.Collections;
+import java.util.List;
 
-public class Bank implements Comparable{
+public class Bank{
 
     private String name;
     private String country;
-    private Deposit deposit;
+    private List<Deposit> deposits;
 
-    public Bank() {
-        this.deposit = new Deposit();
-    }
-
-    public int compareTo(Object o) {
-        return name.compareTo(((Bank) o).getName());
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        if(other == this) return true;
-        if(!(other instanceof Bank)) return false;
-        Bank bank = (Bank) other;
-        return this.name.equals(bank.getName()) &&
-                this.country.equals(bank.getCountry()) &&
-                this.deposit.equals(bank.getDeposit());
+    public Bank(List<Deposit> deposits) {
+        this.deposits = deposits;
     }
 
     @Override
     public String toString() {
-        return "Name: " + name +
-                " Country: " + country +
-                " " + deposit;
+        StringBuilder res = new StringBuilder();
+        for (Deposit deposit : deposits) {
+            res.append(deposit.toString()).append("\n");
+        }
+        return "{\nName: " + name +
+                "\nCountry: " + country +
+                "\n" + res + "}";
     }
 
     public void setName(String name) {
         this.name = name;
     }
+
     public String getName() {
         return name;
     }
@@ -48,11 +41,12 @@ public class Bank implements Comparable{
         return country;
     }
 
-    public void setDeposit(Deposit deposit) {
-        this.deposit = deposit;
+    public List<Deposit> getDeposits() {
+        return deposits;
     }
 
-    public Deposit getDeposit() {
-        return deposit;
+    public void sort() {
+        Collections.sort(deposits);
     }
+
 }

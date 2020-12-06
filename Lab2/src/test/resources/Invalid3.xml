@@ -17,4 +17,12 @@
         <Profitability>8</Profitability>
         <TimeConstraints>6</TimeConstraints>
     </Deposit>
+    <Unknown>
+        <Type>Saving</Type>
+        <Depositor>Nadja</Depositor>
+        <AccountId>Error</AccountId>
+        <AmountOnDeposit>5000</AmountOnDeposit>
+        <Profitability>8</Profitability>
+        <TimeConstraints>6</TimeConstraints>
+    </Unknown>
 </Bank>

@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class ConsoleInterface {
 
-    private List<Plan> _plans;
+    private List<Plan> plans;
 
     private void help() {
         System.out.println("print - print plans\nsort [cost/annual] - sort by given parameter\n" +
@@ -20,13 +20,13 @@ public class ConsoleInterface {
     }
     
     private void printAll() {
-        for (Plan plan: _plans) {
+        for (Plan plan: plans) {
             printOne(plan);
         }
     }
     
     public ConsoleInterface(List<Plan> plans) {
-        _plans = plans;
+        this.plans = plans;
     }
 
     public void start() {
@@ -47,9 +47,9 @@ public class ConsoleInterface {
                         continue;
                     }
                     if(input[1].equals("cost")) {
-                        _plans = Sorter.byCost(_plans);
+                        plans = Sorter.byCost(plans);
                     } else if(input[1].equals("annual")) {
-                        _plans = Sorter.byAnnualCost(_plans);
+                        plans = Sorter.byAnnualCost(plans);
                     }
                 }
                 case "find" -> {
@@ -64,9 +64,9 @@ public class ConsoleInterface {
                         continue;
                     }
                     if(input[1].equals("cost")) {
-                        Finder.byPredicate(_plans, plan -> plan.cost() == val).ifPresent(this::printOne);
+                        Finder.byPredicate(plans, plan -> plan.getCost() == val).ifPresent(this::printOne);
                     } else if(input[1].equals("annual")) {
-                        Finder.byPredicate(_plans, plan -> plan.annualCost() == val).ifPresent(this::printOne);
+                        Finder.byPredicate(plans, plan -> plan.getAnnualCost() == val).ifPresent(this::printOne);
                     }
                 }
                 case "apply" -> {
@@ -78,11 +78,11 @@ public class ConsoleInterface {
                     catch (Throwable error) {
                         continue;
                     }
-                    if(pos < 0 || pos >= _plans.size()) {
+                    if(pos < 0 || pos >= plans.size()) {
                         continue;
                     }
                     try {
-                        _plans.get(pos).apply(val);
+                        plans.get(pos).apply(val);
                     }
                     catch (Exception exception) {
                         System.out.println(exception.getMessage());
@@ -96,11 +96,11 @@ public class ConsoleInterface {
                     catch (Throwable error) {
                         continue;
                     }
-                    if(pos < 0 || pos >= _plans.size()) {
+                    if(pos < 0 || pos >= plans.size()) {
                         continue;
                     }
                     try {
-                        _plans.get(pos).discard();
+                        plans.get(pos).discard();
                     }
                     catch (Exception exception) {
                         System.out.println(exception.getMessage());
