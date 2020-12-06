@@ -1,0 +1,20 @@
+<Bank>
+    <Name>Privat Bank</Name>
+    <Country>Ukraine</Country>
+    <Deposit>
+        <Type>Urgent</Type>
+        <Depositor>Michael</Depositor>
+        <AccountId>11111</AccountId>
+        <AmountOnDeposit>2000</AmountOnDeposit>
+        <Profitability>5</Profitability>
+        <TimeConstraints>12</TimeConstraints>
+    </Deposit>
+    <Deposit>
+        <Type>Saving</Type>
+        <Depositor>Nadja</Depositor>
+        <AccountId>22222</AccountId>
+        <AmountOnDeposit>5000</AmountOnDeposit>
+        <Profitability>8</Profitability>
+        <TimeConstraints>6</TimeConstraints>
+    </Deposit>
+</Bank>

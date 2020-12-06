@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <xs:element name="Bank">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Name" type="xs:string"/>
+                <xs:element name="Country" type="xs:string"/>
+                <xs:element name="Deposit" type="deposit" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="depositType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="OnDemand"/>
+            <xs:enumeration value="Urgent"/>
+            <xs:enumeration value="Calculated"/>
+            <xs:enumeration value="Saving"/>
+            <xs:enumeration value="Accumulating"/>
+            <xs:enumeration value="Metal"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="deposit">
+        <xs:sequence>
+            <xs:element name="Type" type="depositType"/>
+            <xs:element name="Depositor" type="xs:string"/>
+            <xs:element name="AccountId" type="xs:int"/>
+            <xs:element name="AmountOnDeposit" type="xs:int"/>
+            <xs:element name="Profitability" type="xs:int"/>
+            <xs:element name="TimeConstraints" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
