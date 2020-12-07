@@ -33,13 +33,8 @@ public class BankSaxHandler extends DefaultHandler {
         switch (qName) {
             case "Name" -> name = data.toString();
             case "Country" -> country = data.toString();
-            case "Type" -> bankBuilder.tagType(data.toString());
-            case "Depositor" -> bankBuilder.tagDepositor(data.toString());
-            case "AccountId" ->bankBuilder.tagAccountId(data.toString());
-            case "AmountOnDeposit" -> bankBuilder.tagAmountOnDeposit(data.toString());
-            case "Profitability" -> bankBuilder.tagProfitability(data.toString());
-            case "TimeConstraints" -> bankBuilder.tagTimeConstraints(data.toString());
             case "Deposit" -> bankBuilder.finishDeposit();
+            default -> bankBuilder.tag(qName, data.toString());
         }
     }
 }

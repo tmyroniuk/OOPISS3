@@ -33,6 +33,25 @@ public class BankBuilder {
         currentDeposit = new Deposit();
     }
 
+    public void tag(String tagName, String val) {
+        switch (tagName) {
+            case "Type" -> tagType(val);
+            case "Depositor" -> tagDepositor(val);
+            case "AccountId" -> tagAccountId(val);
+            case "AmountOnDeposit" -> tagAmountOnDeposit(val);
+            case "Profitability" -> tagProfitability(val);
+            case "TimeConstraints" -> tagTimeConstraints(val);
+        }
+    }
+
+    public static final String rootName() {
+        return "Deposit";
+    }
+
+    public static final String collectionName() {
+        return "Bank";
+    }
+
     public void tagType(String val) {
         currentDeposit.setType(DepositType.valueOf(val));
     }

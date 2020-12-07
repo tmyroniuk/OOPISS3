@@ -30,7 +30,7 @@ public class DomXmlParser implements Parser {
 
         Element root = document.getDocumentElement();
 
-        NodeList nList = root.getElementsByTagName("Deposit");
+        NodeList nList = root.getElementsByTagName(BankBuilder.rootName());
 
         for (int temp = 0; temp < nList.getLength(); temp++)
         {

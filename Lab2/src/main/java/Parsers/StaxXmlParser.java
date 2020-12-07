@@ -37,19 +37,14 @@ public class StaxXmlParser implements Parser {
                     switch (startElement.getName().getLocalPart()) {
                         case "Name" -> name = nextEvent.asCharacters().getData();
                         case "Country" -> country = nextEvent.asCharacters().getData();
-                        case "Type" -> bankBuilder.tagType(nextEvent.asCharacters().getData());
-                        case "Depositor" -> bankBuilder.tagDepositor(nextEvent.asCharacters().getData());
-                        case "AccountId" -> bankBuilder.tagAccountId(nextEvent.asCharacters().getData());
-                        case "AmountOnDeposit" -> bankBuilder.tagAmountOnDeposit(nextEvent.asCharacters().getData());
-                        case "Profitability" -> bankBuilder.tagProfitability(nextEvent.asCharacters().getData());
-                        case "TimeConstraints" -> bankBuilder.tagTimeConstraints(nextEvent.asCharacters().getData());
+                        default -> bankBuilder.tag(startElement.getName().getLocalPart(), nextEvent.asCharacters().getData());
                     }
                 }
                 if (event.isEndElement()) {
                     EndElement endElement = event.asEndElement();
-                    if (endElement.getName().getLocalPart().equals("Deposit")) {
+                    if (endElement.getName().getLocalPart().equals(BankBuilder.rootName())) {
                         bankBuilder.finishDeposit();
-                    } else if (endElement.getName().getLocalPart().equals("Bank")) {
+                    } else if (endElement.getName().getLocalPart().equals(BankBuilder.collectionName())) {
                         bankBuilder.finish(name, country);
                     }
                 }
